@@ -9,15 +9,28 @@ class GetOnlinePosts extends Component {
         this.state = {
             error : null,
             isLoaded : false,
-            posts : []          
+            posts : []
         };
     }
 
     componentDidMount(){
         // I will use fake api from jsonplaceholder website
-        // this return 100 posts 
+        // this return 100 posts
         // fetch("https://jsonplaceholder.typicode.com/posts")
-        fetch('http://192.168.1.56:5000/getSomeDataFromFile')
+        // fetch('http://192.168.1.56:5000/getSomeDataFromFile')
+        // fetch('http://localhost:5000/getSomeDataFromFile')
+
+
+        var headers = {}
+        let url = 'http://localhost:5001/getSomeDataFromFile';
+
+        fetch(url, {
+          method: 'GET',
+          mode: 'cors', // no-cors, *cors, same-origin
+          cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+          credentials: 'same-origin', // include, *same-origin, omit
+          headers: headers
+        })
         .then( response => response.json())
         .then(
             // handle the result
@@ -28,7 +41,7 @@ class GetOnlinePosts extends Component {
                 });
             },
 
-            // Handle error 
+            // Handle error
             (error) => {
                 this.setState({
                     isLoaded: true,
@@ -52,8 +65,8 @@ class GetOnlinePosts extends Component {
                 </div>
             );
         }
-      
+
     }
   }
-  
+
   export default GetOnlinePosts;
