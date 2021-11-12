@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Table from '../Table/DynamicTables';
 import './GetOnLinePosts.css'
+import CONFIG from '../../config.json';
+
 // get posts from online api
 // it's return a json file
 class GetOnlinePosts extends Component {
@@ -17,12 +19,10 @@ class GetOnlinePosts extends Component {
         // I will use fake api from jsonplaceholder website
         // this return 100 posts
         // fetch("https://jsonplaceholder.typicode.com/posts")
-        // fetch('http://192.168.1.56:5000/getSomeDataFromFile')
-        // fetch('http://localhost:5000/getSomeDataFromFile')
 
 
         var headers = {}
-        let url = 'http://localhost:5001/getSomeDataFromFile';
+        let url = CONFIG.server + '/' + CONFIG.api;
 
         fetch(url, {
           method: 'GET',
